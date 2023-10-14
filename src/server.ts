@@ -12,16 +12,7 @@ app.get('/', (_, res) => {
   res.send("Hello World");
 })
 
-app.get('/posts/videos/stream', async (req, res) => {
-  try {
-    console.log(req.app.locals);
-    const { posts } = req.app.locals; // Access "posts" collection
-    const shortVideoPosts = await posts.find({ type: 'Short_Video' }).exec();
-    res.json(shortVideoPosts);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+
 
 const start = async () => {
   // Initialize Payload
