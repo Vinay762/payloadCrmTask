@@ -20,6 +20,22 @@ const Posts: CollectionConfig = {
     },
     
   ],
+  endpoints: [
+    {
+      path: '/videos/stream',
+      method: 'get',
+      handler: async (req, res, next) => {
+        try{
+          const shortVideoPosts = await posts.find({ type: 'Short_Video' }).exec();
+          res.send({shortVideoPosts});
+        }catch (error) {
+          res.send(error)
+        }
+      },
+    },
+  ]
 }
+
+
 
 export default Posts
